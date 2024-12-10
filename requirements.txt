@@ -1,0 +1,17 @@
+PyMuPDF
+azure-ai-documentintelligence
+azure-core
+azure-identity
+azure-search-documents
+cffi
+langchain
+tiktoken
+python-dotenv
+pillow
+requests
+langchain-openai
+langchain-community
+langchain-core
+langchain-text-splitters
+langchainhub
+openai
