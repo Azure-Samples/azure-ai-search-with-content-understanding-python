@@ -1,20 +1,16 @@
-# Azure AI Content Understanding Samples (Python)
+# Azure AI Search with Content Understanding Samples (Python)
 
-Welcome! Content Understanding is a solution that analyzes and comprehends various media content, such as **documents, images, audio, and video**, transforming it into structured, organized, and searchable data.
+Welcome! Content Understanding is an innovative solution designed to analyze and interpret diverse media types, including documents, images, audio, and video. It transforms this content into structured, organized, and searchable data. In this sample, we will demonstrate how to index your files using the rich insights extracted from the Content Understanding API, and subsequently index these files with Azure Search to enhance their searchability.
+
 
 - The samples in this repository default to the latest preview API version: **(2024-12-01-preview)**.
 
-## Features
-
-Azure AI Content Understanding is a new Generative AI-based [Azure AI service](https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview), designed to process/ingest content of any type (documents, images, audio, and video) into a user-defined output format. Content Understanding offers a streamlined process to reason over large amounts of unstructured data, accelerating time-to-value by generating an output that can be integrated into automation and analytical workflows.
 
 ## Samples
 
 | File | Description |
 | --- | --- |
-| [field_extraction.ipynb](notebooks/field_extraction.ipynb) | Extract custom fields with sample analyzer templates |
-| [content_extraction.ipynb](notebooks/content_extraction.ipynb) | Extract structured content from your input files |
-| [analyzer_training.ipynb](notebooks/analyzer_training.ipynb) | Provide training data to improve the quality of your analyzer |
+| [search_with_visual_document.ipynb](notebooks/search_with_visual_document.ipynb) | Extract custom fields with sample analyzer templates |
 
 
 ## Getting started
@@ -28,12 +24,12 @@ You can run this repo virtually by using GitHub Codespaces, which will open a we
 1. Make sure the following tools are installed:
 
     * [Azure Developer CLI (azd)](https://aka.ms/install-azd)
-    * [Python 3.9+](https://www.python.org/downloads/)
+    * [Python 3.11+](https://www.python.org/downloads/)
 
-2. Make a new directory called `azure-ai-content-understanding-python` and clone this template into it using the `azd` CLI:
+2. Make a new directory called `azure-ai-search-with-content-understanding-python` and clone this template into it using the `azd` CLI:
 
     ```shell
-    azd init -t azure-ai-content-understanding-python
+    azd init -t azure-ai-search-with-content-understanding-python
     ```
 
     You can also use git to clone the repository if you prefer.
@@ -53,8 +49,15 @@ You can run this repo virtually by using GitHub Codespaces, which will open a we
 ### (Option 2) Manually create resources and set environment variables
 1. Create [Azure AI Services resource](docs/create_azure_ai_service.md)
 1. Go to `Access Control (IAM)` in resource, grant yourself role `Cognitive Services User`
+1. Create [Azure OpenAI resource](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource?pivots=web-portal)
+1. Deploy GPT model
+1. Deploy embedding model
+1. Go to `Access Control (IAM)` in resource, grant yourself role `Cognitive Services OpenAI User`
+1. Create [Azure Search resource](https://learn.microsoft.com/en-us/azure/search/search-create-service-portal)
+1. Go to `Access Control (IAM)` in resource, grant yourself role `Search Index Data Contributor`
+1. Go to `Access Control (IAM)` in resource, grant yourself role `Search Service Contributor`
 1. Copy `notebooks/.env.sample` to `notebooks/.env`
-1. Fill **AZURE_AI_ENDPOINT** with the endpoint from your Azure portal Azure AI Services instance.
+1. Fill required information into .env from the resources you created
 
 ## Open a Jupyter notebook and follow the step-by-step guidance
 
