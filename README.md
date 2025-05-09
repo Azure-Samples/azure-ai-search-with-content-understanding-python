@@ -14,6 +14,7 @@ Welcome! Content Understanding is an innovative solution designed to analyze and
 | [search_with_document_layout.ipynb](notebooks/search_with_document_layout.ipynb) | Use content understanding Layout for content extraction from Documents, and index the file in Azure search |
 | [search_with_visual_document.ipynb](notebooks/search_with_visual_document.ipynb) | Extract custom fields with content understanding API, and used it to index the file in Azure search |
 | [search_with_video.ipynb](notebooks/search_with_video.ipynb) | Extract custom fields with content understanding API, and used it to index the file in Azure search |
+| [search_with_video_webapp.ipynb](notebooks/search_with_video_webapp.ipynb) | All in one webapp UI for Video Search. Extract custom fields with content understanding API, and used it to index the file in Azure search. Performs RAG search with video visualization |
 
 
 ## Getting started
