@@ -61,6 +61,7 @@ You can run this repo virtually by using GitHub Codespaces, which will open a we
 1. Create [Azure Search resource](https://learn.microsoft.com/en-us/azure/search/search-create-service-portal)
 1. Go to `Access Control (IAM)` in resource, grant yourself role `Search Index Data Contributor`
 1. Go to `Access Control (IAM)` in resource, grant yourself role `Search Service Contributor`
+1. Go to your Azure AI Search resourse Settings, Keys, API Access Control and select Role-based access control
 1. Copy `notebooks/.env.sample` to `notebooks/.env`
 1. Fill required information into .env from the resources you created
 1. Login Azure
