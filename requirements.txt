@@ -16,4 +16,4 @@ langchain-text-splitters
 langchainhub
 openai
 Flask==2.2.5
-flask-cors==5.0.1
+flask-cors==6.0.0
