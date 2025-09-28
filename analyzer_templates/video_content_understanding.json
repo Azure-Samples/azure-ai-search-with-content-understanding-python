@@ -1,6 +1,6 @@
 {
     "description": "Generating content understanding from video.",
-    "scenario": "videoShot",
+    "baseAnalyzerId": "prebuilt-videoAnalyzer",
     "config": {
         "returnDetails": true,
         "locales": [
@@ -15,7 +15,8 @@
             "pt-BR",
             "zh-CN"
         ],
-        "enableFace": false
+        "enableFace": false,
+        "segmentationMode": "noSegmentation"
     },
     "fieldSchema": {
         "name": "Content Understanding",
