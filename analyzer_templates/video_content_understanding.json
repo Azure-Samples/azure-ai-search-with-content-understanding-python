@@ -1,6 +1,6 @@
 {
     "description": "Generating content understanding from video.",
-    "scenario": "videoShot",
+    "baseAnalyzerId": "prebuilt-videoAnalyzer",
     "config": {
         "returnDetails": true,
         "locales": [
@@ -15,15 +15,36 @@
             "pt-BR",
             "zh-CN"
         ],
-        "enableFace": false
+        "enableFace": false,
+        "segmentationMode": "auto"
     },
     "fieldSchema": {
         "name": "Content Understanding",
         "descriptions": "Generate content understanding from video.",
         "fields": {
-            "segmentDescription": {
-                "type": "string",
-                "description": "Detailed summary of the video segment, focusing on people, places, and actions taking place."
+            "Segments": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "segmentDescription": {
+                            "type": "string",
+                            "description": "Detailed summary of the video segment, focusing on people, places, and actions taking place."
+                        },
+                        "startTimeMs": {
+                            "type": "integer",
+                            "description": "Start time of the video segment in milliseconds."
+                        },
+                        "endTimeMs": {
+                            "type": "integer",
+                            "description": "End time of the video segment in milliseconds."
+                        },
+                        "text": {
+                            "type": "string",
+                            "description": "Extracted text from the video segment."
+                        }
+                    }
+                }
             }
         }
     }

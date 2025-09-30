@@ -3,7 +3,7 @@
 Welcome! Content Understanding is an innovative solution designed to analyze and interpret diverse media types, including documents, images, audio, and video. It transforms this content into structured, organized, and searchable data. In this sample, we will demonstrate how to index your files using the rich insights extracted from the Content Understanding API, and subsequently index these files with Azure Search to enhance their searchability.
 
 
-- The samples in this repository default to the latest preview API version: **(2024-12-01-preview)**.
+- The samples in this repository default to the latest preview API version: **(2025-05-01-preview)**.
 
 
 ## Samples
