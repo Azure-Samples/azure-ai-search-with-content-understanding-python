@@ -79,23 +79,48 @@ const DEFAULT_JSON_CONFIG = {
   analyzerId: "video_cu_analyzer",
   name: "Video Content Understanding",
   description: "Generating content understanding from video.",
-  scenario: "videoShot",
+  baseAnalyzerId: "prebuilt-videoAnalyzer",
   config: {
     returnDetails: true,
     locales: ["en-US", "es-ES", "es-MX", "fr-FR", "hi-IN", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN"],
     enableFace: false,
+    segmentationMode: "auto",
   },
   fieldSchema: {
     name: "Content Understanding",
     descriptions: "Generate content understanding from video.",
     fields: {
-      segmentDescription: {
-        type: "string",
-        description: "Detailed summary of the video segment, focusing on people, places, and actions taking place.",
+      Segments: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            // Required field for catching description
+            segmentDescription: {
+              type: "string",
+              description:
+                "Detailed summary of the video segment, focusing on people, places, and actions taking place.",
+            },
+            // Required field for catching start time
+            startTimeMs: {
+              type: "integer",
+              description: "Start time of the video segment in milliseconds.",
+            },
+            // Required field for catching end time
+            endTimeMs: {
+              type: "integer",
+              description: "End time of the video segment in milliseconds.",
+            },
+            text: {
+              type: "string",
+              description: "Extracted text from the video segment.",
+            },
+          },
+        },
       },
     },
   },
-}
+};
 
 export default function Home() {
   const [jsonData, setJsonData] = useState<any>(null)
@@ -711,19 +736,17 @@ export default function Home() {
           const timestampInSeconds = result.startTimeMs ? Math.floor(result.startTimeMs / 1000) : 0
 
           // Extract fields for display
-          const fields = result.fields || {}
-
-          console.log(JSON.stringify(result.fields, null, 2))
+          console.log(JSON.stringify(result, null, 2))
 
           return {
             id: index + 1,
             title: `Segment ${index + 1}`,
-            text: fields.topic?.valueString || fields.segmentDescription?.valueString || "No description available",
+            text: result.segmentDescription?.valueString || "No description available",
             timestamp: timestampInSeconds,
-            details: JSON.stringify(fields, null, 2), // Store all fields as JSON for detailed view
+            details: JSON.stringify(result, null, 2), // Store all fields as JSON for detailed view
             startTimeMs: result.startTimeMs,
             endTimeMs: result.endTimeMs,
-            rawFields: fields, // Store the raw fields for display
+            rawFields: result.fields, // Store the raw fields for display
             videoUrl: result.videoUrl || "", // Store the video URL from the search result
           }
         })
@@ -1463,7 +1486,7 @@ export default function Home() {
                             {Object.entries(result.rawFields).map(([key, value]) => {
                               return (
                                 <div key={key} className="mb-2">
-                                  <span className="text-xs font-medium text-slate-500 uppercase">{key}</span>
+                                  <span className="text-xs font-medium text-slate-500">{key}</span>
                                   <p className="text-sm mt-1 whitespace-pre-wrap">{safeStringify(value)}</p>
                                 </div>
                               )
